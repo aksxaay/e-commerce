@@ -7,6 +7,8 @@ import Error from "./pages/Error";
 import Product from "./pages/Product";
 import ProductDetail from "./pages/ProductDetail";
 
+import Redux from "./pages/test-pages/Redux";
+
 import { Footer, Navbar } from "./components";
 import Index from "./pages/Index";
 
@@ -21,6 +23,9 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/product" element={<Product />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+
+          {/* test pages routes */}
+          <Route path="/redux" element={<Redux />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

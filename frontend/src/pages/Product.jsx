@@ -3,11 +3,26 @@ import ProductCard from "../utils/card/ProductCard";
 import { fakeStoreApiProducts } from "../utils/api";
 import axios from "axios";
 
+// redux
+import { fetchProducts } from "../redux/ProductSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { STATUS } from "../redux/ProductSlice";
+
 const Product = () => {
-  const [products, setProducts] = useState([]);
+  // replacing fetch() / axios.get() and useState()
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product.data);
+  const status = useSelector((state) => state.product.status);
+
   useEffect(() => {
-    axios.get(fakeStoreApiProducts).then((res) => setProducts(res.data));
+    dispatch(fetchProducts());
   }, []);
+
+  if (status === STATUS.LOADING) {
+    return <p>Loading......</p>;
+  } else if (status === STATUS.ERROR) {
+    return <p>Error</p>;
+  }
   console.log("Product/products", products);
   return (
     <div>
