@@ -2,9 +2,8 @@
 this is video 1 - 7 codevolution
 */
 
-
-
 import { createStore } from "redux";
+import { bindActionCreators } from "redux";
 // start with actions
 // describe action
 const CAKE_ORDERED = "CAKE_ORDERED";
