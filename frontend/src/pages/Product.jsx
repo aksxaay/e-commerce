@@ -4,9 +4,9 @@ import { fakeStoreApiProducts } from "../utils/api";
 import axios from "axios";
 
 // redux
-import { fetchProducts } from "../redux/ProductSlice";
+import { fetchProducts } from "../redux/productSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { STATUS } from "../redux/ProductSlice";
+import { STATUS } from "../redux/productSlice";
 
 const Product = () => {
   // replacing fetch() / axios.get() and useState()

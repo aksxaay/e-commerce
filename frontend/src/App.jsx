@@ -1,16 +1,16 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Error from "./pages/Error";
 import Product from "./pages/Product";
 import ProductDetail from "./pages/ProductDetail";
-
 import Redux from "./pages/test-pages/Redux";
+import Cart from "./pages/Cart";
+import Error from "./pages/Error";
 
 import { Footer, Navbar } from "./components";
-import Index from "./pages/Index";
 
 const App = () => {
   return (
@@ -26,6 +26,7 @@ const App = () => {
 
           {/* test pages routes */}
           <Route path="/redux" element={<Redux />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

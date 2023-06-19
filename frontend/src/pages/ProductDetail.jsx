@@ -8,8 +8,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [productDetail, setProductDetail] = useState();
   useEffect(() => {
-    axios.get(`${fakeStoreApiProducts}/${id}`)
-    .then((res) => {
+    axios.get(`${fakeStoreApiProducts}/${id}`).then((res) => {
       setProductDetail(res.data);
     });
   }, [id]);

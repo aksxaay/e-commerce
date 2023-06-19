@@ -1,14 +1,14 @@
-import React from 'react'
-import { Hero } from '../components'
-import Featured from '../components/Featured'
+import React from "react";
+import { Hero } from "../components";
+import Featured from "../components/Featured";
 
 const Index = () => {
   return (
-   <>
-   <Hero/>
-   <Featured/>
-   </>
-  )
-}
+    <>
+      <Hero />
+      <Featured />
+    </>
+  );
+};
 
-export default Index
+export default Index;

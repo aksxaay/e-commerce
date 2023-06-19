@@ -11,4 +11,6 @@ and the state timeline is a very powerful tool, which is why it is important.
 Redux Toolkit is batteries included
 Redux cumbersome to use
 
-### Three Core Concepts
+All explanations on [obsidian Coding Big Money/Skills/Redux-Toolkit]
+
+at `/redux` the demo follows Redux Toolkit / Quick Start / Full Counter App Example Sandbox

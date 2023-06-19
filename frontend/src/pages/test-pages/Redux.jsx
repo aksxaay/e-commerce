@@ -1,6 +1,6 @@
-import React from 'react';
-import './Redux.css';
-import Counter from './ui/Counter';
+import React from "react";
+import "./Redux.css";
+import Counter from "./ui/Counter";
 
 function App() {
   return (

@@ -49,7 +49,7 @@ const Counter = () => {
             type="reset"
             // className={styles.button}
             className={
-              "appearance-none bg-none text-[32px] px-3 outline-none border-2 border-solid border-transparent text-[#704cb6] pb-1 cursor-pointer bg-[#704cb61a] rounded-[2px] transition-all duration-150 hover:border-2 hover:border-solid hover:border-[#704cb666] focus:border-solid focus:border-[#704cb666] active:bg-[#704cb633] ml-4"
+              "ml-4 cursor-pointer appearance-none rounded-[2px] border-2 border-solid border-transparent bg-[#704cb61a] bg-none px-3 pb-1 text-[32px] text-[#704cb6] outline-none transition-all duration-150 hover:border-2 hover:border-solid hover:border-[#704cb666] focus:border-solid focus:border-[#704cb666] active:bg-[#704cb633]"
             }
             onClick={() => dispatch(setCount(0))}
           >
@@ -73,7 +73,9 @@ const Counter = () => {
           </button>
           <button
             className={styles.asyncButton}
-            onClick={() => dispatch(incrementAsync(Number(increment) || 0))}
+            onClick={() =>
+              dispatch(incrementAsync(Number(incrementAmount) || 0))
+            }
           >
             Add Async
           </button>
