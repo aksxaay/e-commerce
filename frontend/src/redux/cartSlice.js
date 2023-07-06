@@ -4,7 +4,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-// takes object with 3 properties
+// createSlice() takes object with 3 properties
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -14,19 +14,20 @@ const cartSlice = createSlice({
   },
   reducers: {
     // can take methods / properties
-
     // method
-    addItemsToCart(prevState, action) {
+    addItemToCart(prevState, action) {
       const newItem = action.payload;
       const existingItem = prevState.items.find(
         (item) => item.id === newItem.id
       );
       prevState.totalQuantity++;
+      prevState.totalPrice += newItem.price;
 
       if (!existingItem) {
         prevState.items.push({
-          name: newItem.name,
           id: newItem.id,
+          image: newItem.image,
+          name: newItem.name,
           price: newItem.price,
           quantity: 1,
           totalPrice: Number(newItem.price),
@@ -38,23 +39,29 @@ const cartSlice = createSlice({
     },
 
     removeItemFromCart: (prevState, action) => {
-      const itemToBeRemoved = prevState.items.find(
-        (item) => item.id === action.payload?.id
-      );
+      const id = action.payload;
+      const itemToBeRemoved = prevState.items.find((item) => item.id === id);
 
       // if item found
       if (itemToBeRemoved) {
+        prevState.totalPrice -= itemToBeRemoved.price;
         prevState.totalQuantity--;
-        if (itemToBeRemoved.quantity === 1)
-          prevState.items.filter((item) => item.id === itemToBeRemoved.id);
-        else {
-          itemToBeRemoved.quantity++;
+        if (itemToBeRemoved.quantity === 1) {
+          console.log(prevState.items);
+          // apparently filter doesn't mutate the array
+          prevState.items = prevState.items.filter(
+            (item) => item.id !== itemToBeRemoved.id
+          );
+          console.log(prevState.items);
+        } else {
+          itemToBeRemoved.quantity--;
           itemToBeRemoved.totalPrice -= itemToBeRemoved.price;
         }
       }
     },
   },
+  // this is how you default load the cart
 });
 
 export default cartSlice;
-export const { addItemsToCart, removeItemFromCart } = cartSlice.actions;
+export const { addItemToCart, removeItemFromCart } = cartSlice.actions;

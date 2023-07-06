@@ -8,6 +8,19 @@ import { fetchProducts } from "../redux/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { STATUS } from "../redux/productSlice";
 
+import { addItemToCart } from "../redux/cartSlice";
+
+const defaultCart = [
+  {
+    id: "RF293",
+    image:
+      "https://cdn.tuk.dev/assets/templates/e-commerce-kit/bestSeller3.png",
+    name: "North Wolf Bag",
+    price: 900,
+    quantity: 1,
+  },
+];
+
 const Product = () => {
   // replacing fetch() / axios.get() and useState()
   const dispatch = useDispatch();
@@ -15,6 +28,12 @@ const Product = () => {
   const status = useSelector((state) => state.product.status);
 
   useEffect(() => {
+    console.log("twice");
+    // default load Cart
+    defaultCart.map((item) => {
+      dispatch(addItemToCart(item));
+    });
+    // fetch Products
     dispatch(fetchProducts());
   }, []);
 
